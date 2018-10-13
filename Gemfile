@@ -65,3 +65,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mini_racer', platforms: :ruby
+gem 'bulma-rails', '~> 0.7.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'

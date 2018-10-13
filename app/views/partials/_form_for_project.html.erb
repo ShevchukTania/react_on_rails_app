@@ -1,0 +1,5 @@
+<%= form_for [:account, @project] do |form| %>
+  <%=form.text_field :title, class:'input is-primary', placeholder: 'Title' %>
+  <%=form.text_field :description, class:'input is-primary', placeholder: 'Description'  %>
+  <%= form.submit 'Submit', class:'button is-primary is-outlined' %>
+<%end%>

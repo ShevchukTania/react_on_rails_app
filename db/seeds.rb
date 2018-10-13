@@ -1,7 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+projects = Project.create(title: 'First project',
+                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                  status: 'In progress')
+# projects << Project.create({ title: 'Second project' },
+#                   { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+#                   { status: 'In progress' })
+# projects << Project.create({ title: 'Third project' },
+#                   { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+#                   { status: 'In progress' })
+# projects << Project.create({ title: 'Fourth project' },
+#                   { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+#                   { status: 'In progress' })
+# projects << Project.create({ title: 'Fifth project' },
+#                   { description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+#                   { status: 'In progress' })
+
+Task.create(title:'First task',
+            description:'Lorem ipsum dolor sit',
+            status:'In process',
+            date_assigned:DateTime.now,
+            deadline: DateTime.now+10.days,
+            project: projects)
+# Task.create(title:'Second task',
+#             description:'Lorem ipsum dolor sit',
+#             status:'In process',
+#             date_assigned:DateTime.today,
+#             worker:'user',
+#             deadline: DateTime.today+5.days,
+#             project: projects.first)
+# Task.create(title:'Third task',
+#             description:'Lorem ipsum dolor sit',
+#             status:'In process',
+#             date_assigned:DateTime.today,
+#             worker:'user',
+#             deadline: DateTime.today+5.days,
+#             project: projects.first)
