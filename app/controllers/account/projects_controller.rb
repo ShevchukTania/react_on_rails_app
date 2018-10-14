@@ -1,7 +1,8 @@
 class Account::ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.all
+    @projects = Project.all.paginate(page: params[:page], per_page: 8)
+
   end
 
   def new
@@ -18,6 +19,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def show
+    @tasks = @project.tasks
   end
 
   def edit
@@ -34,7 +36,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project.delete
+    if @project.destroy
       flash[:notice] = 'Project deleted!'
       redirect_to account_projects_path
     else
@@ -50,4 +52,5 @@ class Account::ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
+
 end

@@ -1,7 +1,8 @@
 class Account::TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
-    @tasks = Task.all
+    @tasks = Task.for_project(params[:project_id])
+
   end
 
   def new
@@ -9,9 +10,10 @@ class Account::TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(tasks_params)
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new(task_params)
     if @task.save
-      redirect_to root_path
+      redirect_to account_project_path(@project)
     else
       render :new
     end
@@ -24,9 +26,9 @@ class Account::TasksController < ApplicationController
   end
 
   def update
-    if @task.update_attributes(tasks_params)
+    if @task.update_attributes(task_params)
       flash[:notice] = 'Task updated!'
-      redirect_to root_path
+      redirect_to account_project_tasks_path
     else
       flash[:error] = 'Sorry, please try again'
       render :edit
@@ -36,7 +38,7 @@ class Account::TasksController < ApplicationController
   def destroy
     if @task.delete
       flash[:notice] = 'Task deleted!'
-      redirect_to root_path
+      redirect_to account_project_tasks_path
     else
       flash[:error] = 'Sorry, please try again'
       render :destroy
@@ -44,7 +46,7 @@ class Account::TasksController < ApplicationController
   end
 
   private
-  def Task_params
+  def task_params
     params.require(:task).permit!
   end
   def set_task

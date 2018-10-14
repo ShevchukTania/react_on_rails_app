@@ -1,1 +1,9 @@
-<h1>task#index</h1>
+<h2 class='title'>Task of Project</h2>
+<div class="columns is-multiline">
+  <% @tasks.order(created_at: :desc).each do |task|%>
+    <%= render partial: 'partials/show_task',  locals: { task: task}%>
+  <%end%>
+</div>
+<%=link_to 'Add new task', new_account_project_task_path(@tasks[0].project_id), class: 'button is-one-quarter'%>
+<%=link_to 'All projects', account_projects_path, class: 'button' %>
+<%=link_to 'Dashboard', root_path, class: 'button' %>

@@ -18,3 +18,11 @@
 body{
   background: linear-gradient(to top right, rgba(255,82,99,0.9) 10%, rgba(255,115,129,0.9) 65%, rgba(252,189,1,0.9) 125%);
 }
+.column.is-one-quarter{
+  width: 23%;
+  margin: 1%;
+  border: 5px dashed #f99696;
+}
+.button{
+  margin-top: 5px;
+}

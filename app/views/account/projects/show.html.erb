@@ -1,3 +1,10 @@
-<%= render partial: 'partials/show_project', locals: { project: @project}%>
-<%=link_to 'View all projects', account_projects_path, class: 'button'%>
+<p class="title"><%= @project.title%></p>
+<p class="subtitle"><%= @project.description%></p>
+<p>Created: <%= @project.created_at.to_date%></p>
+<p>There are <%= @project.tasks.count%> task in this project</p>
+<%@project.tasks.each do |task|%>
+  <%= link_to task.title, account_project_task_path(@project.id, task.id)%><br>
+<%end%>
+<%=link_to 'Add new task', new_account_project_task_path(@project.id), class: 'button is-one-quarter'%><br>
+<%=link_to 'View all projects', account_projects_path, class: 'button'%><br>
 <%=link_to 'Dashboard', root_path, class: "button"  %>

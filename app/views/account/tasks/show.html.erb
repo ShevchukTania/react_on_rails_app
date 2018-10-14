@@ -1,1 +1,4 @@
-<h1>task#show</h1>
+<p class='title center'>Task</p>
+<%= render partial: 'partials/show_task', locals: { task: @task}%>
+<%=link_to 'View all tasks', account_project_tasks_path, class: 'button'%>
+<%=link_to 'Dashboard', root_path, class: "button"  %>

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     end
   end
   root 'dashboard#index'
+  get 'hello_world', to: 'hello_world#index'
 end

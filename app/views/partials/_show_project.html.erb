@@ -1,6 +1,8 @@
-<div class="column is-one-quarter box">
-  <p class=""><%=project.title%></p>
-  <p class="subtitle"><%=project.description%></p>
-  <%=link_to 'Edit', edit_account_project_path(project.id) %>
-  <%=link_to 'Delete', account_project_path(project.id), method: :delete %>
-</div>
+  <div class="column is-one-quarter">
+    <p class="title"><%=link_to project.title, account_project_path(project.id)%></p>
+    <p class="subtitle"><%=project.description%></p>
+    <p>There are <%=project.tasks.count%> tasks</p>
+    <p> <%=link_to 'Add new task', new_account_project_task_path(project.id)%></p>
+    <%=link_to 'Edit', edit_account_project_path(project.id) %>
+    <%=link_to 'Delete', account_project_path(project.id), method: :delete %>
+  </div>
