@@ -1,0 +1,8 @@
+<div class="column is-one-quarter box">
+  <p class="title"><%=task.title%></p>
+  <p class="subtitle"><%=task.description%></p>
+  <p>Created: <%=task.created_at.to_date%></p>
+  <p>Deadline:<%=task.deadline%></p>
+  <%=link_to 'Edit', edit_account_project_task_path(task.project_id, task.id) %>
+  <%=link_to 'Delete', account_project_task_path(task.project_id, task.id), method: :delete %>
+</div>

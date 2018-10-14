@@ -15,6 +15,7 @@ class Account::TasksController < ApplicationController
     if @task.save
       redirect_to account_project_path(@project)
     else
+      flash[:danger] = 'Something went wrong, please try again'
       render :new
     end
   end
@@ -27,20 +28,20 @@ class Account::TasksController < ApplicationController
 
   def update
     if @task.update_attributes(task_params)
-      flash[:notice] = 'Task updated!'
+      flash[:success] = 'Task updated!'
       redirect_to account_project_tasks_path
     else
-      flash[:error] = 'Sorry, please try again'
+      flash[:danger] = 'Something went wrong, please try again'
       render :edit
     end
   end
 
   def destroy
     if @task.delete
-      flash[:notice] = 'Task deleted!'
+      flash[:success] = 'Task deleted!'
       redirect_to account_project_tasks_path
     else
-      flash[:error] = 'Sorry, please try again'
+      flash[:danger] = 'Something went wrong, please try again'
       render :destroy
     end
   end

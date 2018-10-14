@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%flash.each do |name, message|%>
+      <div class="notification is-<%=name%>">
+        <button class="delete" onclick="parentNode.remove()"></button>
+        <%= message%>
+      </div>
+    <%end%>
     <%= yield %>
   </body>
 </html>

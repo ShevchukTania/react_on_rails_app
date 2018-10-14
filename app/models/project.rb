@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
+  validates :title, :description, presence: true
 
-  self.per_page = 10
-  WillPaginate.per_page = 8
+  self.per_page = 8
 end

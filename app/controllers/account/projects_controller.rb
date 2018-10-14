@@ -14,6 +14,7 @@ class Account::ProjectsController < ApplicationController
     if @project.save
       redirect_to account_projects_path
     else
+      flash[:danger] = 'Something went wrong, please try again'
       render :new
     end
   end
@@ -27,20 +28,20 @@ class Account::ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      flash[:notice] = 'Project updated!'
+      flash[:success] = 'Project updated!'
       redirect_to account_project_path
     else
-      flash[:error] = 'Sorry, please try again'
+      flash[:danger] = 'Something went wrong, please try again'
       render :edit
     end
   end
 
   def destroy
     if @project.destroy
-      flash[:notice] = 'Project deleted!'
+      flash[:success] = 'Project deleted!'
       redirect_to account_projects_path
     else
-      flash[:error] = 'Sorry, please try again'
+      flash[:danger] = 'Something went wrong, please try again'
       render :destroy
     end
   end
